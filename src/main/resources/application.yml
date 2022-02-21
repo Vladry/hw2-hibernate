@@ -1,0 +1,60 @@
+# сейчас проект настроен на то, что будет выполняться hibernate-boot создание таблиц в БД
+# и, затем выполнятся файлы  schema.sql  и data.sql
+# для справки:
+#    https://www.baeldung.com/spring-boot-data-sql-and-schema-sql
+
+server:
+  port: 9000
+spring:
+  h2:
+    console:
+      enabled: true
+      settings:
+        trace: false
+---
+spring:
+  profiles:
+    active: local
+---
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    defer-datasource-initialization: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+      generate_ststistics: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create
+  config:
+    activate:
+      on-profile: local
+---
+spring:
+  sql:
+    init:
+      mode: always
+  datasource:
+    url: jdbc:mysql://remotemysql.com:3306/MP3olDmrBo
+    username: MP3olDmrBo
+    password: kZPtQ0GR5H
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    defer-datasource-initialization: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+      generate_ststistics: false
+    show-sql: false
+    hibernate:
+# ddl-auto  отключаем если надо отключить hibernate-boot -овское создание таблиц БД и сразу выполнить schema.sql + data.sql
+      ddl-auto: validate
+#      ddl-auto: none
+  config:
+    activate:
+      on-profile: prod

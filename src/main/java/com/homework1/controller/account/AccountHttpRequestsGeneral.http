@@ -1,0 +1,43 @@
+POST http://localhost:9000/accounts/
+Content-Type: application/json
+
+{
+  "id": "1",
+  "number": null,
+  "currency": "USD",
+  "balance": 0.0,
+  "customer": null
+}
+
+###
+GET http://localhost:9000/accounts/1
+###
+GET http://localhost:9000/accounts/all
+
+###
+POST http://localhost:9000/accounts/all
+Content-Type: application/json
+
+[
+  {
+    "id": "1",
+    "number": null,
+    "currency": "USD",
+    "balance": 1.0,
+    "customer": null
+  },
+  {
+    "id": "2",
+    "number": null,
+    "currency": "EUR",
+    "balance": 2.0,
+    "customer": null
+  },
+  {
+    "id": "3",
+    "number": null,
+    "currency": "GBP",
+    "balance": 5.0,
+    "customer": null
+  }
+]

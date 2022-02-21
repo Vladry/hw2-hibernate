@@ -1,0 +1,62 @@
+POST http://localhost:9000/customers/
+Content-Type: application/json
+
+{
+  "name": "Vlad",
+  "email": "rvy@ukr.net",
+  "age":  30
+}
+
+###
+POST http://localhost:9000/customers/all
+Content-Type: application/json
+
+[
+{
+"name": "Vlad1",
+"email": "rvy@ukr.net",
+"age": 31
+},
+  {
+    "name": "Vlad2",
+    "email": "rvy@ukr.net",
+    "age": 32
+  },
+  {
+    "name": "Vlad3",
+    "email": "rvy@ukr.net",
+    "age": 33
+  }
+  ]
+
+###
+GET http://localhost:9000/customers/all
+
+###
+DELETE http://localhost:9000/customers/all
+Content-Type: application/json
+
+[
+  {
+    "name": "Vlad1",
+    "email": "rvy@ukr.net",
+    "age":  31
+  },
+  {
+    "name": "Vlad2",
+    "email": "rvy@ukr.net",
+    "age":  32
+  },
+  {
+    "name": "Vlad3",
+    "email": "rvy@ukr.net",
+    "age":  33
+  },
+  {
+    "name": "Vlad",
+    "email": "rvy@ukr.net",
+    "age":  30
+  }
+]
+###
+
