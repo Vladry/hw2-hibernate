@@ -1,8 +1,8 @@
-package com.homework1.DAO;
+package com.homework2.DAO;
 
-import com.homework1.domain.Account;
-import com.homework1.domain.Currency;
-import com.homework1.domain.Customer;
+import com.homework2.domain.Account;
+import com.homework2.domain.Currency;
+import com.homework2.domain.Customer;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

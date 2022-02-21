@@ -1,7 +1,7 @@
-package com.homework1.service.account;
+package com.homework2.service.account;
 
-import com.homework1.DAO.AccountDaoGeneral;
-import com.homework1.domain.Account;
+import com.homework2.DAO.AccountDaoGeneral;
+import com.homework2.domain.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.homework1.DAO;
+package com.homework2.DAO;
 
 import java.util.ArrayList;
 import java.util.List;

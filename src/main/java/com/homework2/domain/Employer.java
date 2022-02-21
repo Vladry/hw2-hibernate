@@ -1,4 +1,4 @@
-package com.homework1.domain;
+package com.homework2.domain;
 
 import lombok.*;
 

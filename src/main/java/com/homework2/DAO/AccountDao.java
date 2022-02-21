@@ -1,6 +1,6 @@
-package com.homework1.DAO;
+package com.homework2.DAO;
 
-import com.homework1.domain.Account;
+import com.homework2.domain.Account;
 import org.springframework.stereotype.Repository;
 
 @Repository

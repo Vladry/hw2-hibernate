@@ -1,7 +1,7 @@
-package com.homework1.service.customer;
+package com.homework2.service.customer;
 
-import com.homework1.DAO.CustomerDao;
-import com.homework1.domain.Customer;
+import com.homework2.DAO.CustomerDao;
+import com.homework2.domain.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -5,8 +5,12 @@ CREATE TABLE employers
     id      INT UNSIGNED UNIQUE NOT NULL AUTO_INCREMENT,
     name    VARCHAR(30),
     address VARCHAR(100),
+#     customer_id int,
     CONSTRAINT pk_employers PRIMARY KEY (id)
 );
+
+ALTER TABLE employers ADD COLUMN customer_id int;
+
 
 DROP TABLE IF EXISTS accounts;
 
@@ -16,9 +20,15 @@ CREATE TABLE accounts
     number   INT,
     currency VARCHAR(10),
     balance  DOUBLE,
-#     customer  ,
+#     customer INT UNSIGNED, -  убрать
+
+    # в конце формирования таблиц свяжем ключём:
+#     FOREIGN KEY (customer) REFERENCES customers(id),
     CONSTRAINT pk_accounts PRIMARY KEY (id)
 );
+ALTER TABLE accounts ADD COLUMN customer_id INT UNSIGNED; # внести это поле внутрь таблицы accounts
+
+
 
 DROP TABLE IF EXISTS customers;
 
@@ -28,10 +38,22 @@ CREATE TABLE customers
     name  VARCHAR(100)        NOT NULL,
     email VARCHAR(100)        NOT NULL,
     age   INT UNSIGNED        NOT NULL CHECK (age > 18),
-#     employer FOREIGN KEY ("employer_id"),
-#     accounts FOREIGN KEY REFERENCES ("accounts.account_id"),
+
+    employer_id INT UNSIGNED,
+    account_id INT UNSIGNED,
+    # в конце формирования таблиц свяжем ключами:
+#     FOREIGN KEY (employer_id) REFERENCES employers(id),
+#     FOREIGN KEY (account_id) REFERENCES accounts(id),
     CONSTRAINT pk_customers PRIMARY KEY (id)
 );
+
+ALTER TABLE accounts ADD CONSTRAINT fk_accounts FOREIGN KEY (customer) REFERENCES customers(id);# убрать
+ALTER TABLE accounts ADD CONSTRAINT fk_customer_id FOREIGN KEY (customer_id) REFERENCES customers(id);
+
+ALTER TABLE customers ADD (
+    CONSTRAINT fk_employer FOREIGN KEY (employer_id) REFERENCES employers(id),
+    CONSTRAINT fk_account  FOREIGN KEY (account_id)  REFERENCES accounts(id)
+    );
 
 
 

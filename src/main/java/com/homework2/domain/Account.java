@@ -1,4 +1,4 @@
-package com.homework1.domain;
+package com.homework2.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,7 +20,7 @@ public class Account extends AbstractEntity {
     Currency currency;
     Double balance;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinTable(name = "account_id")
+    @JoinColumn(name = "customer_id")
     Customer customer;
 
     public Account(Currency currency, Customer customer) {

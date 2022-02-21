@@ -1,7 +1,7 @@
-package com.homework1.controller.customer;
+package com.homework2.controller.customer;
 
-import com.homework1.domain.Customer;
-import com.homework1.service.customer.CustomerServiceGeneral;
+import com.homework2.domain.Customer;
+import com.homework2.service.customer.CustomerServiceGeneral;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,4 +1,4 @@
-package com.homework1.domain;
+package com.homework2.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,7 +23,7 @@ public class Customer extends AbstractEntity {
     private String email;
     private Integer age;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "customer_id")
+    @JoinColumn(name = "employer_id")
     private Employer employer;
 
     @OneToMany(mappedBy="customer")

@@ -1,6 +1,6 @@
-package com.homework1.controller.account;
+package com.homework2.controller.account;
 
-import com.homework1.service.account.AccountService;
+import com.homework2.service.account.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
