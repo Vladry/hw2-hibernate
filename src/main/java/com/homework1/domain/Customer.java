@@ -1,24 +1,39 @@
 package com.homework1.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-public class Customer {
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "customers")
+public class Customer extends AbstractEntity {
 
-    private Long id;
     private String name;
     private String email;
     private Integer age;
-    private List<Account> accounts;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id")
+    private Employer employer;
 
-    public Customer() {
-    }
+    @OneToMany(mappedBy="customer")
+    private Set<Account> accounts;
 
     public Customer(String name, String email, int age) {
         this.name = name;
         this.age = age;
         this.email = email;
-        this.accounts = new ArrayList<>();
+        this.accounts = new HashSet<>();
     }
 
     @Override
@@ -76,11 +91,11 @@ public class Customer {
         this.age = age;
     }
 
-    public List<Account> getAccounts() {
+    public Set<Account> getAccounts() {
         return accounts;
     }
 
-    public void setAccounts(List<Account> accounts) {
+    public void setAccounts(Set<Account> accounts) {
         this.accounts = accounts;
     }
 }

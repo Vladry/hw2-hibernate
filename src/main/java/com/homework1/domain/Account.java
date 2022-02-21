@@ -1,16 +1,27 @@
 package com.homework1.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
 import java.util.UUID;
 
-public class Account {
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "accounts")
+public class Account extends AbstractEntity {
 
-    Long id;
     String number;
     Currency currency;
     Double balance;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinTable(name = "account_id")
     Customer customer;
-
-    public Account() {}
 
     public Account(Currency currency, Customer customer) {
         this.number = UUID.randomUUID().toString();
