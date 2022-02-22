@@ -22,9 +22,13 @@ public class Customer extends AbstractEntity {
     private String name;
     private String email;
     private Integer age;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "employer_id")
-    private Employer employer;
+
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "employers_id")
+//    private Employer employer;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "customers_employers")
+    private Set<Employer> employers;
 
     @OneToMany(mappedBy="customer")
     private Set<Account> accounts;

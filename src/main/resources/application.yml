@@ -36,9 +36,11 @@ spring:
       on-profile: local
 ---
 spring:
+#    для включения авто- заполнения БД, в физическую (не h2 базу) еще нужно добавить:
   sql:
     init:
-      mode: always
+      mode: never
+#      mode: always
   datasource:
     url: jdbc:mysql://remotemysql.com:3306/MP3olDmrBo
     username: MP3olDmrBo
@@ -52,9 +54,12 @@ spring:
       generate_ststistics: false
     show-sql: false
     hibernate:
-# ddl-auto  отключаем если надо отключить hibernate-boot -овское создание таблиц БД и сразу выполнить schema.sql + data.sql
-      ddl-auto: validate
+      # ddl-auto  отключаем если надо отключить hibernate-boot -овское создание
+      #  таблиц БД и сразу выполнить schema.sql + data.sql
 #      ddl-auto: none
+#       либо , если инициализируем базы по загрузке hibernate:
+       ddl-auto: validate
+
   config:
     activate:
       on-profile: prod
