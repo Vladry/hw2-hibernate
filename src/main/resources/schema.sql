@@ -1,25 +1,3 @@
-DROP TABLE IF EXISTS customers_employers;
-CREATE TABLE customers_employers
-(
-    customers_id BIGINT,
-    employers_id BIGINT,
-    employer_id BIGINT,
-    customer_id BIGINT
-);
-
-
-DROP TABLE IF EXISTS employers;
-CREATE TABLE employers
-(
-    id      BIGINT AUTO_INCREMENT UNIQUE NOT NULL,
-    name    VARCHAR(30),
-    street VARCHAR(100),
-    address VARCHAR(100),
-    customer_id BIGINT,
-    CONSTRAINT pk_employers PRIMARY KEY (id)
-);
-
-
 DROP TABLE IF EXISTS accounts;
 CREATE TABLE accounts
 (
@@ -44,12 +22,31 @@ CREATE TABLE customers
     CONSTRAINT pk_customers PRIMARY KEY (id)
 );
 
+DROP TABLE IF EXISTS customers_employers;
+CREATE TABLE customers_employers
+(
+    customers_id BIGINT,
+    employers_id BIGINT,
+    employer_id BIGINT,
+    customer_id BIGINT
+);
+
+DROP TABLE IF EXISTS employers;
+CREATE TABLE employers
+(
+    id      BIGINT AUTO_INCREMENT UNIQUE NOT NULL,
+    name    VARCHAR(30),
+    street VARCHAR(100),
+    address VARCHAR(100),
+    customer_id BIGINT,
+    CONSTRAINT pk_employers PRIMARY KEY (id)
+);
+
+DROP TABLE IF EXISTS hibernate_sequence;
+CREATE TABLE hibernate_sequence (next_val BIGINT(20));
 
 
-/*
-ALTER TABLE accounts ADD CONSTRAINT fk_customer_id FOREIGN KEY (customer_id) REFERENCES customers(id);
-ALTER TABLE customers ADD CONSTRAINT fk_employer FOREIGN KEY (employer_id) REFERENCES employers(id);
-ALTER TABLE customers ADD CONSTRAINT fk_account  FOREIGN KEY (account_id)  REFERENCES accounts(id);
-*/
+
+
 
 

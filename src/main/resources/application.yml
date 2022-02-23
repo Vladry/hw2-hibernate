@@ -30,7 +30,7 @@ spring:
       generate_ststistics: true
     generate-ddl: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: create-drop
   config:
     activate:
       on-profile: local
@@ -39,8 +39,8 @@ spring:
 #    для включения авто- заполнения БД, в физическую (не h2 базу) еще нужно добавить:
   sql:
     init:
-      mode: never
-#      mode: always
+#      mode: never
+      mode: always
   datasource:
     url: jdbc:mysql://remotemysql.com:3306/MP3olDmrBo
     username: MP3olDmrBo
@@ -54,12 +54,8 @@ spring:
       generate_ststistics: false
     show-sql: false
     hibernate:
-      # ddl-auto  отключаем если надо отключить hibernate-boot -овское создание
-      #  таблиц БД и сразу выполнить schema.sql + data.sql
-#      ddl-auto: none
-#       либо , если инициализируем базы по загрузке hibernate:
-       ddl-auto: validate
-
+      # https://russianblogs.com/article/85481550836/    ,  https://docs.spring.io/spring-boot/docs/1.1.0.M1/reference/html/howto-database-initialization.html
+       ddl-auto: create-drop
   config:
     activate:
       on-profile: prod
