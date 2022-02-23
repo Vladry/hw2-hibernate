@@ -1,40 +1,25 @@
-package com.homework2.DAO;
+package com.homework2.DAO.in_memory;
 
+import com.homework2.DAO.abstractDao;
 import com.homework2.domain.Account;
 import com.homework2.domain.Currency;
 import com.homework2.domain.Customer;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceUnit;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Repository
-public class CustomerDao<T> extends abstractDao<Customer> {
+public class CustomerDao_in_memory<T> extends abstractDao<Customer> {
 
-    @PersistenceUnit
-    EntityManagerFactory emf;
 
     public Customer update(Customer customer, Long id) {
-        EntityManager em = emf.createEntityManager();
-        Customer cust_ = em.find(Customer.class, id);
-        if(cust_ != null){
-            cust_.setAccounts( customer.getAccounts() );
-            cust_.setAge( cust_.getAge() );
-            cust_.setEmployers( customer.getEmployers() );
-            cust_.setName( customer.getName() );
-            em.getTransaction().begin();
-            em.merge(cust_);
-            em.getTransaction().commit();
-            em.close();
-            return cust_;
-        } else {
-            em.close();
-            return null;
-        }
+        Customer cust = col.stream().filter(c -> c.getId().equals(id)).findFirst().orElse(null);
+        if (cust != null) {
+            int index = col.indexOf(cust);
+            col.add(index, customer);
+            return cust;
+        } else return null;
     }
 
     public Customer createAccount(Currency currency, Long id) {
