@@ -14,7 +14,7 @@ spring:
 ---
 spring:
   profiles:
-    active: local
+    active: prod
 ---
 spring:
   datasource:
@@ -55,7 +55,7 @@ spring:
     show-sql: false
     hibernate:
       # https://russianblogs.com/article/85481550836/    ,  https://docs.spring.io/spring-boot/docs/1.1.0.M1/reference/html/howto-database-initialization.html
-       ddl-auto: create-drop
+       ddl-auto: update
   config:
     activate:
       on-profile: prod

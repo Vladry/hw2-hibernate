@@ -36,7 +36,7 @@ CustomerService service;
     @PostMapping("/")
     public Customer save(
             @RequestBody Customer c) {
-        service.save(c);
+//        service.save(c);
         return c;
     }
 
