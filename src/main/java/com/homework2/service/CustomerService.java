@@ -1,4 +1,4 @@
-package com.homework2.service.customer;
+package com.homework2.service;
 
 import com.homework2.DAO.AccountDao;
 import com.homework2.DAO.CustomerDao;

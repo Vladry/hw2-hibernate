@@ -2,7 +2,7 @@ package com.homework2.controller.customer;
 
 import com.homework2.domain.Currency;
 import com.homework2.domain.Customer;
-import com.homework2.service.customer.CustomerService;
+import com.homework2.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

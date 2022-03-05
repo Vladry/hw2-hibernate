@@ -1,7 +1,7 @@
 package com.homework2.controller.account;
 
 import com.homework2.domain.Account;
-import com.homework2.service.account.AccountService;
+import com.homework2.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
