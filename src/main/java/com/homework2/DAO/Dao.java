@@ -13,7 +13,7 @@ public interface Dao<T> {
 
     List<T> findAll();
 
-    boolean deleteById(long id);
+    boolean deleteById(Long id);
 
-    T getOne(long id);
+    T getOne(Long id);
 }

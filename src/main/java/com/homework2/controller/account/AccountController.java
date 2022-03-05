@@ -63,12 +63,12 @@ public boolean drawAmount(
     }
 
     @DeleteMapping("{id}")
-    public boolean deleteById( @PathVariable("id") long id){
+    public boolean deleteByIdL( @PathVariable("id") Long id){
         return service.deleteById(id-1);
     }
 
     @GetMapping("{id}")
-    public Account getOne( @PathVariable("id") long id){
+    public Account getOne( @PathVariable("id") Long id){
         return service.getOne(id - 1);
     }
 

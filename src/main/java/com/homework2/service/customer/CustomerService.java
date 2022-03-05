@@ -48,7 +48,7 @@ public class CustomerService {
         return customerDao.findAll();
     }
 
-    public boolean deleteById(long id) {
+    public boolean deleteById(Long id) {
         return customerDao.deleteById(id);
     }
 

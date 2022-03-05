@@ -1,62 +1,65 @@
 package com.homework2.DAO;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class abstractDao<T> implements Dao<T> {
-    protected final List<T> col = new ArrayList<T>();
+
+    @PersistenceUnit
+    EntityManagerFactory emf;
+
 
     @Override
     public T save(T obj) {
-        col.add(obj);
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        em.persist(obj);
+        em.getTransaction().commit();
+        em.close();
         return obj;
     }
 
     @Override
     public boolean delete(T obj) {
+        EntityManager em = emf.createEntityManager();
         try {
-            col.remove(obj);
-            return true;
+            em.getTransaction().begin();
+            em.remove(obj);
+            em.getTransaction().commit();
+            em.close();
         } catch (Exception e) {
             e.printStackTrace();
+            if (em != null) {
+                em.close();
+            }
             return false;
         }
+        return true;
     }
 
     @Override
     public void deleteAll(List<T> entities) {
-        col.clear();
     }
 
     @Override
     public void saveAll(List<T> entities) {
-        col.addAll(entities);
     }
 
     @Override
     public List<T> findAll() {
-        return col;
+        return null;
     }
 
     @Override
-    public boolean deleteById(long id) {
-        try {
-            col.remove( (int)id );
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
+    public boolean deleteById(Long id) {
             return false;
-        }
     }
 
     @Override
-    public T getOne(long id) {
-
-        try {
-            return col.get( (int)id );
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+    public T getOne(Long id) {
+        return null;
     }
 }

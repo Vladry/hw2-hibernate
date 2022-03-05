@@ -64,12 +64,12 @@ CustomerService service;
     }
 
     @DeleteMapping("{id}")
-    public boolean deleteById( @PathVariable("id") long id){
+    public boolean deleteById( @PathVariable("id") Long id){
         return service.deleteById(id - 1);
     }
 
     @GetMapping("{id}")
-    public Customer getOne( @PathVariable("id") long id){
+    public Customer getOne( @PathVariable("id") Long id){
         return service.getOne(id - 1);
     }
 }

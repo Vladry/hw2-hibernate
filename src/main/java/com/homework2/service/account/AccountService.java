@@ -62,11 +62,11 @@ public class AccountService {
         return accountDao.findAll();
     }
 
-    public boolean deleteById(long id) {
+    public boolean deleteById(Long id) {
         return accountDao.deleteById(id);
     }
 
-    public Account getOne(long id) {
+    public Account getOne(Long id) {
         return accountDao.getOne(id);
     }
 
