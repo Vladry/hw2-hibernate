@@ -1,39 +1,34 @@
 SET FOREIGN_KEY_CHECKS=0;
 
-INSERT INTO customers (name, email, age, employer_id, account_id)
+INSERT INTO customers (name, email, age)
 VALUES ('Vlad',
         'rvy@ukr.net',
-        40,
-        1,
-        null),
+        40
+        ),
        ('Sergey',
         'sergo@ukr.net',
-        42,
-        2,
-        null),
+        42
+        ),
        ('Max',
         'Max@ukr.net',
-        38,
-        3,
-        null),
+        38
+        ),
        ('Evgeny',
         'evgen-20@ukr.net',
-        20,
-        4,
-        null),
+        20
+        ),
        ('Petro',
         'petya@ukr.net',
-        30,
-        5,
-        null);
+        30
+        );
 
 
-INSERT INTO employers (name, address, customer_id)
-VALUES ('RogaIKopyta', 'Bratislavska 9A', 1),
-       ('KievInvestStroy', 'gorod Kiev', 2),
-       ('IT - world', 'Odessa', 3),
-       ('Venture IT Creations', 'New-York', 4),
-       ('Self-Employed', 'Kiev city', 5);
+INSERT INTO employers (name, address, street)
+VALUES ('RogaIKopyta', 'Kiev', 'Bratislavska 9A'),
+       ('KievInvestStroy', 'gorod Kiev', 'Zhukova'),
+       ('IT - world', 'Odessa', 'Privoz'),
+       ('Venture IT Creations', 'New-York', 'Brooklyn'),
+       ('Self-Employed', 'Kiev city', 'Gaydara');
 
 
 INSERT INTO accounts (number, currency, balance, customer_id)

@@ -12,40 +12,40 @@ public class EmployerController {
 
     @Autowired
     EmployerService service;
-//
-//    @PostMapping("/employer")
-//    public void save(@RequestBody() Employer e) {
-//        service.save(e);
-//    }
-//
-//    @DeleteMapping("/employer")
-//    public void delete(@RequestBody Employer e) {
-//        service.delete(e);
-//    }
-//
-//    @DeleteMapping("/employer/all")
-//    public void deleteAll(@RequestBody List<Employer> le) {
-//        service.deleteAll(le);
-//    }
-//
-//    @PostMapping("/employer")
-//    public void saveAll(@RequestBody List<Employer> le) {
-//        service.saveAll(le);
-//    }
-//
-//    @PostMapping("/employer")
-//    public List<Employer> findAll() {
-//        return service.findAll();
-//    }
-//
-//    @GetMapping("/employer/{id}")
-//    public void deleteById(@PathVariable("id") Long id) {
-//        service.deleteById(id);
-//    }
-//
-//    @PostMapping("/employer/{id}")
-//    public void getOne(@PathVariable("id") Long id) {
-//        service.getById(id);
-//    }
+
+    @PostMapping("/employer")
+    public void saveEmployer(@RequestBody() Employer e) {
+        service.save(e);
+    }
+
+    @DeleteMapping("/employer")
+    public void deleteEmployer(@RequestBody Employer e) {
+        service.delete(e);
+    }
+
+    @DeleteMapping("/employers")
+    public void deleteAllEmployers(@RequestBody List<Employer> le) {
+        service.deleteAll(le);
+    }
+
+    @PostMapping("/employers")
+    public void saveAllEmployers(@RequestBody List<Employer> le) {
+        service.saveAll(le);
+    }
+
+    @GetMapping("/employers")
+    public List<Employer> findAll() {
+        return service.findAll();
+    }
+
+    @GetMapping("/employer/{id}")
+    public void deleteEmployerById(@PathVariable("id") Long id) {
+        service.deleteById(id);
+    }
+
+    @PostMapping("/employer/{id}")
+    public void getEmployerById(@PathVariable("id") Long id) {
+        service.getById(id);
+    }
 
 }

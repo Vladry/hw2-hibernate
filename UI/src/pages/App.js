@@ -1,7 +1,9 @@
 import './App.css';
 import React, {useState} from 'react';
-import Button from "@material-ui/core/Button";
-import AllCustomers from "../components/AllCustomers";
+import CustomerRequestForm from "../components/CustomerRequestForm";
+import CreateUserForm from "../components/CreateUserForm";
+import CreateUserAccountForm from "../components/CreateUserAccountForm";
+
 
 function App() {
 
@@ -17,29 +19,14 @@ function App() {
             console.warn('error loading customers')
         }
     }
-
-
     const [customersArr, setCustomersArr] = useState([]);
 
     return (
         <div className="App">
-            <header className="App-header">
-                <p>
-                    All Customer List:
-                </p>
-                <div>
-                    <AllCustomers customers={customersArr}/>
-                </div>
-            </header>
-            <div>
-
-                <Button type="button" className=""
-                        color='primary'
-                        variant='contained'
-                        onClick={getCustomers}>
-                    get customers
-                </Button>
-            </div>
+            <CustomerRequestForm  customers={customersArr} getCustomers={getCustomers}/>
+            <br/><br/><br/>
+            <CreateUserForm/><br/><br/>
+            <CreateUserAccountForm/>
         </div>
     );
 
