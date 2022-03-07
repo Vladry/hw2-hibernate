@@ -102,7 +102,7 @@ public class EmployerDao<T> implements Dao<Employer> {
     }
 
     @Override
-    public Employer getOne(Long id) {
+    public Employer getById(Long id) {
         EntityManager em = emf.createEntityManager();
         return em.find(Employer.class, id);
     }

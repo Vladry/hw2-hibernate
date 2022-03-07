@@ -33,10 +33,10 @@ CustomerService service;
         return service.deleteAccount(accNumber, id);
     }
 
-    @PostMapping("/")
+    @PostMapping("/customer")
     public Customer save(
             @RequestBody Customer c) {
-//        service.save(c);
+        service.save(c);
         return c;
     }
 
@@ -65,17 +65,11 @@ CustomerService service;
 
     @DeleteMapping("{id}")
     public boolean deleteById( @PathVariable("id") Long id){
-        return service.deleteById(id - 1);
+        return service.deleteById(id);
     }
 
     @GetMapping("{id}")
-    public Customer getOne( @PathVariable("id") Long id){
-        return service.getOne(id - 1);
+    public Customer getById(@PathVariable("id") Long id){
+        return service.getById(id);
     }
 }
-
-/*
-  - Изменить данные пользователя
-  - Создать счет для конкретного пользователя
-  - Удалить счет у пользователя
-  */

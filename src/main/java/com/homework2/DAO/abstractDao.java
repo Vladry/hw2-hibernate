@@ -59,7 +59,7 @@ public abstract class abstractDao<T> implements Dao<T> {
     }
 
     @Override
-    public T getOne(Long id) {
+    public T getById(Long id) {
         return null;
     }
 }

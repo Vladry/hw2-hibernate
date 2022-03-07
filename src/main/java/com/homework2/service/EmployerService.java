@@ -2,13 +2,10 @@ package com.homework2.service;
 
 import com.homework2.DAO.EmployerDao;
 import com.homework2.domain.Employer;
-import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import java.util.List;
 
 @Service
@@ -33,11 +30,7 @@ public class EmployerService {
     }
 
     public void deleteAll(List<Employer> entities) {
-        try {
-            deleteAll(entities);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        employerDao.deleteAll(entities);
     }
 
     public void saveAll(List<Employer> entities) {
@@ -58,8 +51,8 @@ public class EmployerService {
         return true;
     }
 
-    public Employer getOne(Long id) {
-        return employerDao.getOne(id);
+    public Employer getById(Long id) {
+        return employerDao.getById(id);
     }
 }
 

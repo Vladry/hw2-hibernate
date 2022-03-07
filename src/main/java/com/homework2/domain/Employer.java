@@ -15,11 +15,9 @@ public class Employer extends AbstractEntity {
     private String name;
     private String street;
     private String address;
-//    @OneToMany(fetch = FetchType.EAGER, mappedBy = "employer")
-//    private Set<Customer> customers;
-//    @JoinColumn(name = "customers_id")
+
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "customers_employers")
+//    @JoinTable(name = "customers_employers")  -эту строку нельзя, т.к. она уже есть в Customer!
     private Set<Customer> customers;
 
 

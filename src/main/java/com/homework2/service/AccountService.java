@@ -67,7 +67,7 @@ public class AccountService {
     }
 
     public Account getOne(Long id) {
-        return accountDao.getOne(id);
+        return accountDao.getById(id);
     }
 
 }

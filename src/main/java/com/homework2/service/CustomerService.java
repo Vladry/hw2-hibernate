@@ -23,7 +23,9 @@ public class CustomerService {
     public Customer update(Customer customer, Long id){
         return customerDao.update(customer, id);
     }
-
+public void save(Customer c){
+        customerDao.save(c);
+}
     public Customer createAccount(Currency currency, Long id){
         return customerDao.createAccount(currency, id);
     }
@@ -52,12 +54,7 @@ public class CustomerService {
         return customerDao.deleteById(id);
     }
 
-    public Customer getOne(long id) {
-        return customerDao.getOne(id);
+    public Customer getById(Long id) {
+        return customerDao.getById(id);
     }
 }
-/*
-  - Изменить данные пользователя
-  - Создать счет для конкретного пользователя
-  - Удалить счет у пользователя
-  */

@@ -15,5 +15,5 @@ public interface Dao<T> {
 
     boolean deleteById(Long id);
 
-    T getOne(Long id);
+    T getById(Long id);
 }

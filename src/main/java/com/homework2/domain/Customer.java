@@ -27,7 +27,7 @@ public class Customer extends AbstractEntity {
     @JoinTable(name = "customers_employers")
     private Set<Employer> employers;
 
-    @OneToMany(mappedBy="customer")
+    @OneToMany(mappedBy="customer", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private Set<Account> accounts;
 
     public Customer(String name, String email, int age) {

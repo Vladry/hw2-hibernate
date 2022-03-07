@@ -56,7 +56,7 @@ public class CustomerDao<T> extends abstractDao<Customer> {
     }
 
     @Override
-    public Customer getOne(Long id) {
+    public Customer getById(Long id) {
         EntityManager em = emf.createEntityManager();
         Customer cust = em.find(Customer.class, id);
         em.close();
