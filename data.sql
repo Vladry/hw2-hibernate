@@ -36,13 +36,13 @@ VALUES ('RogaIKopyta', 'Bratislavska 9A', 1),
        ('Self-Employed', 'Kiev city', 5);
 
 
-INSERT INTO accounts
-VALUES (null, 'number1', 1, 15.05, 1),
-       (null, 'number1', 2, 13.05, 1),
-       (null, 'number1', 3, 25.05, 1),
-       (null, 'number1', 1, 35.05, 2),
-       (null, 'number1', 2, 15.05, 2),
-       (null, 'number1', 3, 55.05, 3),
-       (null, 'number1', 1, 44.05, 4),
-       (null, 'number1', 2, 43.05, 5),
-       (null, 'number1', 3, 33.05, 5);
+INSERT INTO accounts (number, currency, balance, customer_id)
+VALUES ('number1', 1, 15.05, 1),
+       ('number1', 2, 13.05, 1),
+       ('number1', 3, 25.05, 1),
+       ('number1', 1, 35.05, 2),
+       ('number1', 2, 15.05, 2),
+       ('number1', 3, 55.05, 3),
+       ('number1', 1, 44.05, 4),
+       ('number1', 2, 43.05, 5),
+       ('number1', 3, 33.05, 5);
