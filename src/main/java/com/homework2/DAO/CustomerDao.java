@@ -51,16 +51,8 @@ public class CustomerDao<T> extends abstractDao<Customer> {
         } catch (HibernateException e) {
             e.printStackTrace();
             em.getTransaction().rollback();
-                em.close();
+            em.close();
         }
-    }
-
-    @Override
-    public Customer getById(Long id) {
-        EntityManager em = emf.createEntityManager();
-        Customer cust = em.find(Customer.class, id);
-        em.close();
-        return cust;
     }
 
     public Customer createAccount(Currency currency, Long id) {
@@ -120,5 +112,30 @@ public class CustomerDao<T> extends abstractDao<Customer> {
         em.getTransaction().commit();
         em.close();
     }
+
+    @Override
+    public List<Customer> findAll() {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createQuery("from Customer").getResultList();
+        }
+        finally {
+            em.close();
+        }
+    }
+
+
+    @Override
+    public Customer getById(Long id) {
+        EntityManager em = emf.createEntityManager();
+//        Customer cust = em.find(Customer.class, id);
+        Customer cust = null;
+        cust = (Customer) em.createQuery("SELECT c from Customer c WHERE c.id = :id")
+                .setParameter("id", id)
+                .getSingleResult();
+        em.close();
+        return cust;
+    }
+
 
 }

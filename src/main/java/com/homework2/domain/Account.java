@@ -16,7 +16,9 @@ import java.util.UUID;
 @Table(name = "accounts")
 public class Account extends AbstractEntity {
 
+    @Column(name = "number", nullable = false)
     String number;
+    @Enumerated(EnumType.ORDINAL)
     Currency currency;
     Double balance;
     @ManyToOne(fetch = FetchType.LAZY)
@@ -28,6 +30,13 @@ public class Account extends AbstractEntity {
         this.currency = currency;
         this.customer = customer;
         this.balance = 0.0;
+    }
+
+    public Account(Currency currency, Customer customer, Double balance) {
+        this.number = UUID.randomUUID().toString();
+        this.currency = currency;
+        this.customer = customer;
+        this.balance = balance;
     }
 
     @Override

@@ -50,6 +50,7 @@ public class AccountDao<T> extends abstractDao<Account> {
 
     @Override
     public Account save(Account obj) {
+        System.out.println(obj);
         EntityManager em = emf.createEntityManager();
         Account newAccount = new Account(obj.getCurrency(), obj.getCustomer());
         em.getTransaction().begin();

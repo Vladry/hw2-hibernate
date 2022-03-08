@@ -15,22 +15,27 @@ import java.util.List;
 @Transactional
 public class CustomerService {
 
-    @Autowired
-    CustomerDao<Customer> customerDao;
-    @Autowired
-    AccountDao<Account> accountDao;
+    private final CustomerDao<Customer> customerDao;
+    private final AccountDao<Account> accountDao;
 
-    public Customer update(Customer customer, Long id){
+    public CustomerService(CustomerDao<Customer> customerDao, AccountDao<Account> accountDao) {
+        this.customerDao = customerDao;
+        this.accountDao = accountDao;
+    }
+
+    public Customer update(Customer customer, Long id) {
         return customerDao.update(customer, id);
     }
-public void save(Customer c){
+
+    public void save(Customer c) {
         customerDao.save(c);
-}
-    public Customer createAccount(Currency currency, Long id){
+    }
+
+    public Customer createAccount(Currency currency, Long id) {
         return customerDao.createAccount(currency, id);
     }
 
-    public Customer deleteAccount(String accNumber, Long id){
+    public Customer deleteAccount(String accNumber, Long id) {
         return customerDao.deleteAccount(accNumber, id);
     }
 
@@ -46,6 +51,7 @@ public void save(Customer c){
         customerDao.saveAll(entities);
     }
 
+    @Transactional(readOnly = true)
     public List<Customer> findAll() {
         return customerDao.findAll();
     }
@@ -54,6 +60,7 @@ public void save(Customer c){
         return customerDao.deleteById(id);
     }
 
+    @Transactional(readOnly = true)
     public Customer getById(Long id) {
         return customerDao.getById(id);
     }

@@ -3,7 +3,6 @@ package com.homework2.controller.customer;
 import com.homework2.domain.Currency;
 import com.homework2.domain.Customer;
 import com.homework2.service.CustomerService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,8 +10,10 @@ import java.util.List;
 @RestController
 public class CustomerController {
 
-@Autowired
-CustomerService service;
+    private final CustomerService service;
+    public CustomerController(CustomerService service) {
+        this.service = service;
+    }
 
 @PutMapping("update/customers")
     public Customer update(
@@ -33,43 +34,61 @@ CustomerService service;
         return service.deleteAccount(accNumber, id);
     }
 
-    @PostMapping("/customer")
+    @DeleteMapping("/customers")
+    public boolean delete(
+            @RequestBody Customer c){
+        return service.delete(c);
+    }
+
+    @DeleteMapping("/customers/all")
+    public void deleteAll(
+            @RequestBody List<Customer> lc){
+        service.deleteAll(lc);
+    }
+
+    @PostMapping("/customers/all")
+    public void saveAll(
+            @RequestBody List<Customer> lc){
+        System.out.println("in controller customers:  saveAll" + lc);
+                service.saveAll(lc);
+    }
+
+//    @PostMapping("/customers/test")
+//    public void saveAll(
+//            @RequestBody List<Integer> lc){
+//        System.out.println("in controller customers:  saveAll" + lc);
+//    }
+
+    @GetMapping("/customers/all")
+    public List<Customer> findAll(){
+        List<Customer> lc = service.findAll();
+        System.out.println(lc);
+        return lc;
+    }
+
+    @DeleteMapping("/customers/{id}")
+    public boolean deleteById( @PathVariable("id") Long id){
+        return service.deleteById(id);
+    }
+
+//
+//    @GetMapping("/customers/{id}")
+//    public Customer getById(@PathVariable("id") Long id){
+//        return service.getById(id);
+//    }
+
+
+    @GetMapping("/customers/{id}")
+    public Customer getById(@PathVariable("id") String id){
+        System.out.println("in @GetMapping(customers/{id}");
+        return service.getById(Long.parseLong(id));
+    }
+
+    @PostMapping("/customers")
     public Customer save(
             @RequestBody Customer c) {
         service.save(c);
         return c;
     }
 
-    @DeleteMapping("/")
-    public boolean delete(
-            @RequestBody Customer c){
-        return service.delete(c);
-    }
-
-    @DeleteMapping("/all")
-    public void deleteAll(
-            @RequestBody List<Customer> lc){
-        service.deleteAll(lc);
-    }
-
-    @PostMapping("/all")
-    public void saveAll(
-            @RequestBody List<Customer> lc){
-        service.saveAll(lc);
-    }
-
-    @GetMapping("all")
-    public List<Customer> findAll(){
-        return service.findAll();
-    }
-
-    @DeleteMapping("{id}")
-    public boolean deleteById( @PathVariable("id") Long id){
-        return service.deleteById(id);
-    }
-
-    @GetMapping("{id}")
-    public Customer getById(@PathVariable("id") Long id){
-        return service.getById(id);
-    }
 }
