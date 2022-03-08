@@ -8,6 +8,16 @@ Content-Type: application/json
   "balance": 0.0,
   "customer": null
 }
+###
+
+POST http://localhost:9000/accounts/
+Content-Type: application/json
+
+{
+"balance": 0.0,
+"customer": 1
+}
+
 
 ###
 GET http://localhost:9000/accounts/1

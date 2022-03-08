@@ -27,6 +27,8 @@ public class Customer extends AbstractEntity {
     @JoinTable(name = "customers_employers")
     private Set<Employer> employers;
 
+
+
     @OneToMany(mappedBy="customer", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private Set<Account> accounts;
 
@@ -36,6 +38,22 @@ public class Customer extends AbstractEntity {
         this.email = email;
         this.accounts = new HashSet<>();
     }
+
+    public Customer(String name) {
+        this.name = name;
+    }
+
+    public Customer(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
+
+    public Customer(String name, String email, Integer age) {
+        this.name = name;
+        this.email = email;
+        this.age = age;
+    }
+
 
     @Override
     public boolean equals(Object o) {

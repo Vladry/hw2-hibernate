@@ -1,9 +1,9 @@
 import React from 'react';
 import Button from '@material-ui/core/button';
 
-const CreateUserAccountForm = () => {
+const CreateAccount = () => {
 
-    const submit =()=>{}
+    const submit = async ()=>{}
 
     return (
         <form action={submit}>
@@ -15,4 +15,4 @@ const CreateUserAccountForm = () => {
     );
 };
 
-export default CreateUserAccountForm;
+export default CreateAccount;

@@ -1,8 +1,8 @@
 import './App.css';
 import React, {useState} from 'react';
 import CustomerRequestForm from "../components/CustomerRequestForm";
-import CreateUserForm from "../components/CreateUserForm";
-import CreateUserAccountForm from "../components/CreateUserAccountForm";
+import CreateCustomer from "../components/CreateCustomer";
+import CreateAccount from "../components/CreateAccount";
 
 
 function App() {
@@ -25,8 +25,8 @@ function App() {
         <div className="App">
             <CustomerRequestForm  customers={customersArr} getCustomers={getCustomers}/>
             <br/><br/><br/>
-            <CreateUserForm/><br/><br/>
-            <CreateUserAccountForm/>
+            <CreateCustomer/><br/><br/>
+            <CreateAccount/>
         </div>
     );
 
