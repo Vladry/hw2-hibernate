@@ -19,11 +19,21 @@ public class EmployerDao<T> implements Dao<Employer> {
     @Override
     public Employer save(Employer obj) {
         EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
-        em.persist(obj);
-        em.getTransaction().commit();
-        em.close();
-        return obj;
+        try {
+            em.getTransaction().begin();
+            em.persist(obj);
+            em.getTransaction().commit();
+            em.close();
+            return obj;
+        } catch (HibernateException e) {
+            e.printStackTrace();
+            em.getTransaction().rollback();
+            return null;
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
     }
 
     @Override

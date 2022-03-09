@@ -8,7 +8,7 @@ const CreateCustomer = () => {
     const inputEmail = useRef(null);
     const inputAge = useRef(null);
 
-    const submit = async (event) => {
+    const submit = (event) => {
         event.preventDefault();
 
         const name = inputName.current.value;
@@ -17,7 +17,7 @@ const CreateCustomer = () => {
 
         const url = "/customers";
 
-        const create = await fetch(url, {
+        fetch(url, {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(
@@ -27,11 +27,9 @@ const CreateCustomer = () => {
                     age: age
                 }
             )
-        });
-        const result = await create.then(r => r.json().then(r => console.log(r)))
-        console.log(`name: ${name}, email: ${email}, age: ${age}`);
+        }).then(r => r.json().then(r => console.log(r)));
 
-        result();
+        console.log(`name: ${name}, email: ${email}, age: ${age}`);
     }
 
 
@@ -41,9 +39,9 @@ const CreateCustomer = () => {
                 <input ref={inputName} name="name" type="text" placeholder="input customer name"/></label><br/>
             <label>email
                 <input ref={inputEmail} name="email" type="text" placeholder="input customer email"/></label><br/>
-            <label>age
+            <label>age  
                 <input ref={inputAge} name="age" type="number" placeholder="input customer age"/></label><br/>
-            submit: <Button type="submit" color="primary" variant="contained">submit</Button>
+            submit <Button type="submit" color="primary" variant="contained">submit</Button>
         </form>
     );
 };

@@ -1,5 +1,6 @@
 package com.homework2.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -16,6 +17,7 @@ public class Employer extends AbstractEntity {
     private String street;
     private String address;
 
+    @JsonIgnore   //без этого не будут из базы выдаваться customers!
     @ManyToMany(fetch = FetchType.EAGER)
 //    @JoinTable(name = "customers_employers")  -эту строку нельзя, т.к. она уже есть в Customer!
     private Set<Customer> customers;

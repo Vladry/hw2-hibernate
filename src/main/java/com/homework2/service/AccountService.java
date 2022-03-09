@@ -66,7 +66,7 @@ public class AccountService {
         return accountDao.deleteById(id);
     }
 
-    public Account getOne(Long id) {
+    public Account getById(Long id) {
         return accountDao.getById(id);
     }
 

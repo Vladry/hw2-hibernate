@@ -1,5 +1,6 @@
 package com.homework2.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,6 +22,8 @@ public class Account extends AbstractEntity {
     @Enumerated(EnumType.ORDINAL)
     Currency currency;
     Double balance;
+
+    @JsonIgnore   //без этого не будут из базы выдаваться customers!
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_id")
     Customer customer;
@@ -28,15 +31,15 @@ public class Account extends AbstractEntity {
     public Account(Currency currency, Customer customer) {
         this.number = UUID.randomUUID().toString();
         this.currency = currency;
-        this.customer = customer;
         this.balance = 0.0;
+        this.customer = customer;
     }
 
-    public Account(Currency currency, Customer customer, Double balance) {
+    public Account(Currency currency, Double balance,  Customer customer) {
         this.number = UUID.randomUUID().toString();
         this.currency = currency;
-        this.customer = customer;
         this.balance = balance;
+        this.customer = customer;
     }
 
     @Override

@@ -1,12 +1,3 @@
-POST http://localhost:9000/accounts/
-Content-Type: application/json
-
-{
-  "currency": 0,
-  "customer_id": 111,
-  "balance": 13.0
-}
-
 
 ###
 GET http://localhost:9000/accounts/1
@@ -40,3 +31,6 @@ Content-Type: application/json
     "customer": null
   }
 ]
+
+###
+DELETE http://localhost:9000/accounts/3

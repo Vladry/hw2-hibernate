@@ -80,7 +80,6 @@ public class CustomerController {
 
     @GetMapping("/customers/{id}")
     public Customer getById(@PathVariable("id") String id){
-        System.out.println("in @GetMapping(customers/{id}");
         return service.getById(Long.parseLong(id));
     }
 
